@@ -49,14 +49,13 @@ public class EmpInputServlet extends HttpServlet {
 		// セッションオブジェクトの取得
 		HttpSession session = request.getSession();
 
-		// ログイン認証済みかどうかを確認
+		// セッションオブジェクトのチェック
+		/* ToDo ログイン認証済みかどうかを確認しましょう */	
 		if (session.getAttribute("userid") != null) {
-			// 認証済み
-			url = "emp-Input.jsp"; // 従業員情報登録画面へ
-		} else {
-			// 未認証
-			url = "login.html"; // ログイン画面へ
+
+			url = "emp-input.jsp";
 		}
+		
 
 		// リクエストの転送
 		RequestDispatcher rd = request.getRequestDispatcher(url);

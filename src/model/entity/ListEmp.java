@@ -10,10 +10,10 @@ import java.util.List;
 
 /**
  * 従業員リストを表します。
- * m_employeeリストのDTOであり、Beanオブジェクトです。
+ * m_employeeリストのDTOです。
  * @author emBex Education
  */
-public class ListEmpBean implements Serializable {
+public class ListEmp implements Serializable {
 	/**
 	 * 従業員リスト
 	 */
@@ -22,29 +22,9 @@ public class ListEmpBean implements Serializable {
 	/**
 	 * ListEmployeeBeanを構築します。
 	 */
-	public ListEmpBean() {
+	public ListEmp() {
 		listEmpBean = new ArrayList<EmpBean>();
 
-
-/*
-		// リストを生成する
-		EmpBean eb;
-		while (rs.next()) {
-			eb = new EmpBean();
-			eb.setEmployeeCode(rs.getString(1));
-			eb.setLastName(rs.getString(2));
-			eb.setFirstName(rs.getString(3));
-			eb.setLastKanaName(rs.getString(4));
-			eb.setFirstKanaName(rs.getString(5));
-			eb.setGender(rs.getInt(6));
-			eb.setBirthDay(rs.getDate(7));
-			eb.setSectionCode(rs.getString(8));
-			eb.setHireDate(rs.getDate(9));
-			eb.setUpdateDatetime(rs.getTimestamp(10));
-
-			listEmpBean.add(eb);
-		}
-			*/
 
 	}
 	/**

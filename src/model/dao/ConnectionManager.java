@@ -18,7 +18,7 @@ public class ConnectionManager {
 	/**
 	 * データベースURL
 	 */
-	private final static String URL = "jdbc:mysql://localhost:3306/emp_manager_db?useSSL=false";
+	private final static String URL = "jdbc:mysql://localhost:3306/emp_sys_db?useSSL=false";
 
 	/**
 	 * ユーザ

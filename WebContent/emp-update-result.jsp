@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>編集処理結果</title>
+<title>従業員編集結果</title>
 </head>
 <body>
 	<%@ include file="header.jsp" %>
@@ -23,7 +23,7 @@
 		}
 	%>
 
-	<!-- ToDo 編集した結果を表示します -->>
+	<!-- ToDo 編集した結果を表示します -->
 
 	<form action="menu-servlet" method="POST">
 		<input type="submit" value="メニュー画面">

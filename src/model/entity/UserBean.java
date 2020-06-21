@@ -26,8 +26,6 @@ public class UserBean implements Serializable {
 	/**
 	 * タイムスタンプ
 	 */
-	//SimpleDateFormat timeStamp = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
-	//private int update_datetime;
 	Date timeStamp = new Date();
     /**
 	 * UserBeanを構築します。

@@ -49,13 +49,11 @@ public class MenuServlet extends HttpServlet {
 		// セッションオブジェクトの取得
 		HttpSession session = request.getSession();
 
-		// ログイン認証済みかどうかを確認
+		// セッションオブジェクトのチェック
+		/* ToDo ログイン認証済みかどうかを確認しましょう */
 		if (session.getAttribute("userid") != null) {
-			// 認証済み
+
 			url = "menu.jsp";
-		} else {
-			// 未認証
-			url = "login.html";
 		}
 
 		// リクエストの転送

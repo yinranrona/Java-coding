@@ -4,26 +4,26 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>従業員登録結果</title>
+<title>削除処理結果</title>
 </head>
 <body>
 	<%@ include file="header.jsp" %>
 
+	<br>
 	<%
-		int count = (Integer)request.getAttribute("count");
+		int count = (Integer) request.getAttribute("count");
 		if (count != 0) {
 	%>
-		以下の従業員情報を登録しました。<br>
+		以下の従業員情報を削除しました。<br>
 	<%
 		} else {
 	%>
-		以下の従業員情報を登録できませんでした。<br>
+		以下の従業員情報を削除できませんでした。<br>
 	<%
 		}
 	%>
 
-	<jsp:useBean id="emp" class="model.entity.EmpBean" scope="request"/>
-		<!-- ToDo Beanからデータを取得して表示します -->
+	<!-- ToDo 削除した結果を表示します -->
 
 	<form action="menu-servlet" method="POST">
 		<input type="submit" value="メニュー画面">

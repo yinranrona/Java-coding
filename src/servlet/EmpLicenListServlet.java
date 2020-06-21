@@ -1,7 +1,3 @@
-/*
- * WebApp_empManager
- * servlet.EmpListServlet.java
- */
 package servlet;
 
 import java.io.IOException;
@@ -15,21 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import model.dao.EmpLicenDAO;
 import model.dao.PageDAO;
 import model.entity.PageBean;
 
 /**
- * 「従業員情報一覧表示画面」への遷移を制御する
- * @author emBex Education
+ * Servlet implementation class EmpLicenListServlet
  */
-@WebServlet("/emp-list-servlet")
-public class EmpListServlet extends HttpServlet {
+@WebServlet("/empLicen-list-servlet")
+public class EmpLicenListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public EmpListServlet() {
+	public EmpLicenListServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -59,54 +55,69 @@ public class EmpListServlet extends HttpServlet {
 			if (currePage != null) {
 				currentPage = Integer.parseInt(currePage);
 			}
+
 			//情報更新
+
 			int infoModify = 0;
-			String infoM = request.getParameter("infoModify");
-			if (infoM != null) {
-
-				infoModify = Integer.parseInt(infoM);
-				if (infoModify == 1) {
-					request.setAttribute("infoModify", 1);
-
+				
+				String infoM = request.getParameter("infoModify");
+				if (infoM != null) {
+					
 					if (session.getAttribute("userid").equals("S110")) {
+
+					infoModify = Integer.parseInt(infoM);
+					if (infoModify == 1) {
+						request.setAttribute("infoModify", 1);
+						
 						request.setAttribute("authority1", "authority1");
-					} else {
+					}
+					}else {
 						request.setAttribute("authority2", "authority2");
 					}
 				}
+				
+
+			EmpLicenDAO edao = new EmpLicenDAO();
+
+			try {
+
+				request.setAttribute("emplicenbeanlist", edao.selectEmpLicen());
+
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO 自動生成された catch ブロック
+				e.printStackTrace();
 			}
 
-		//	EmpBean emp = new EmpBean();
-		PageDAO dao = new PageDAO();
-		PageBean leb = null;
+			//	EmpBean emp = new EmpBean();
+			PageDAO dao = new PageDAO();
+			PageBean leb = null;
 
-		try {
-			//leb = dao.selectAll();
-			leb = dao.pageInfo(currentPage, pageSize);
-		} catch (ClassNotFoundException | SQLException | NumberFormatException e) {
-			e.printStackTrace();
+			try {
+				//leb = dao.selectAll();
+				leb = dao.pageInfo(currentPage, pageSize);
+			} catch (ClassNotFoundException | SQLException | NumberFormatException e) {
+				e.printStackTrace();
+			}
+			url = "emp-licen-list.jsp";
+
+			// リクエストスコープへの属性の設定
+			//request.setAttribute("count", count);
+			request.setAttribute("listEmp", leb.getEmpBean().getListEmpBean());
+			request.setAttribute("pageInfo", leb);
+
+			// リクエストの転送
+			RequestDispatcher rd = request.getRequestDispatcher(url);
+			rd.forward(request, response);
+
 		}
-		url = "emp-list.jsp";
 
-		// リクエストスコープへの属性の設定
-		//request.setAttribute("count", count);
-		request.setAttribute("listEmp", leb.getEmpBean().getListEmpBean());
-		request.setAttribute("pageInfo", leb);
-
-		// リクエストの転送
-		RequestDispatcher rd = request.getRequestDispatcher(url);
-		rd.forward(request, response);
 	}
-	}
-	
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		doGet(request, response);
 
 	}
-
 }

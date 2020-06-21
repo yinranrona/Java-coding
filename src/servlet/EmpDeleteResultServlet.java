@@ -17,17 +17,17 @@ import javax.servlet.http.HttpSession;
 import model.entity.EmpBean;
 
 /**
- * 従業員情報を編集する
+ * 従業員情報を削除する
  * @author emBex Education
  */
-@WebServlet("/emp-update-result-servlet")
-public class EmpUpdateResultServlet extends HttpServlet {
+@WebServlet("/emp-delete-result-servlet")
+public class EmpDeleteResultServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmpUpdateResultServlet() {
+    public EmpDeleteResultServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -59,9 +59,8 @@ public class EmpUpdateResultServlet extends HttpServlet {
 		// リクエストオブジェクトのエンコーディング方式の指定
 		request.setCharacterEncoding("UTF-8");
 
-		if(modeForward==0) {
-			/* ToDo 更新結果を生成してJSPにforwardします */
-		}
+		/* ToDo 削除結果を生成してJSPにforwardします */
+		emp = new EmpBean();
 
 		// リクエストスコープへの属性の設定
 		request.setAttribute("count", count);
@@ -73,3 +72,4 @@ public class EmpUpdateResultServlet extends HttpServlet {
 	}
 
 }
+
